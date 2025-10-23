@@ -1,0 +1,27 @@
+﻿@page
+@using System.Globalization
+@model CoreGymClub.Presentation.Pages.TrainingSessions.IndexModel
+
+<h1>Kommande träningspass</h1>
+
+@if (!Model.Sessions.Any())
+{
+    <p>Inga tillgängliga träningspass.</p>
+}
+else
+{
+    @foreach (var day in Model.Sessions.GroupBy(s => s.Date))
+    {
+        <h2>@day.Key.ToString("D", new CultureInfo("sv-SE"))</h2>
+        <ul>
+            @foreach (var s in day)
+            {
+                <li>
+                    <strong>@s.SessionName</strong><br />
+                    @s.StartTime.ToString("t") – @s.EndTime.ToString("t")<br />
+                    @s.Location • @s.Instructor
+                </li>
+            }
+        </ul>
+    }
+}
