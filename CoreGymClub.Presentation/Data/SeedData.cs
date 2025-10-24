@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreGymClub.Presentation.Data
 {
@@ -6,6 +7,9 @@ namespace CoreGymClub.Presentation.Data
     {
         public static async Task InitializeAsync(IServiceProvider serviceProvider)
         {
+            var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            await context.Database.MigrateAsync();
+
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
