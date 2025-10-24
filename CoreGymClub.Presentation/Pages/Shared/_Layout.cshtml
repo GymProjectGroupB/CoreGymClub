@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CoreGymClub.Presentation.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
-
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
 </head>
 
 <body> @*GYM NARBAR *@
@@ -17,7 +17,7 @@
         <div class="navbarContainer">
 
             <div class="navbar-item">
-                <a href="#section-home">
+                <a asp-area="" asp-page="/Index">
                     <img class="logo-A" src="/images/gym.png" alt="My Logo" />
                 </a>
             </div>
@@ -64,16 +64,24 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - CoreGymClub.Presentation - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+@*     <footer class="border-top footer text-muted">
+        <div class="container"> *@
+            <div class="container-footer-style">
+                <div id="weather-widget" class="weather-widget">
+                    <span id="weather-icon">☁️</span>
+                    <span id="temperature">--°C</span>
+                </div>
+                <div class="navbar-item p-white" data-lang="sv">
+                    &copy; @DateTime.Now.Year Core Gym Club. Alla rättigheter förbehållna.
+                </div>
+            </div>
+@*         </div>
+    </footer> *@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="~/js/footer.js" asp-append-version="true"></script>
+   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
