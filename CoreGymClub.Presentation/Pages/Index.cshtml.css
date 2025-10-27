@@ -1,0 +1,58 @@
+﻿body {
+    background: #020024;
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 100%);
+}
+
+h1 {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.text-center{
+    margin-bottom: 60px;
+}
+
+.infocards {
+    display: grid;
+    grid-template-areas:
+        "top-left top-right"
+        "bottom-left bottom-right"
+        ;
+
+    grid-gap: 60px;
+}
+
+.infocard {
+
+}
+
+#infocard1 {
+    text-align: left;
+    grid-area: top-left;
+    color: green;
+}
+
+#infocard2 {
+    text-align: right;
+    grid-area: top-right;
+    color: green;
+}
+
+#infocard3 {
+    text-align: left;
+    grid-area: bottom-left;
+    color: red;
+}
+
+#infocard4 {
+    text-align: right;
+    grid-area: bottom-right;
+    color: red;
+}
+
+.sign-up-btn{
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: deepskyblue;
+}
