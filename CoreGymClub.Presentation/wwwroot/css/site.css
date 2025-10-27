@@ -29,3 +29,32 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
+.responsive-overflow {
+    overflow-x: auto;
+}
+
+
+input, select, textarea, button {
+    min-height: 40px;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 12px;
+    }
+}
