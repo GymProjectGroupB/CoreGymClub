@@ -1,3 +1,4 @@
+using CoreGymClub.Presentation.Services;
 using CoreGymClub.Presentation.ViewModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,20 +6,29 @@ namespace CoreGymClub.Presentation.Pages.TrainingSessions
 {
     public class IndexModel : PageModel
     {
+        private readonly ITrainingSessionService _trainingService;
+
+        public IndexModel(ITrainingSessionService trainingService)
+        {
+            _trainingService = trainingService;
+        }
+
         public IReadOnlyList<TrainingSessionViewModel> Sessions { get; private set; } = [];
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            var today = DateOnly.FromDateTime(DateTime.Today);
+            var sessions = await _trainingService.UpcomingAsync();
 
-            // Sample data for demonstration purposes
-            Sessions = new List<TrainingSessionViewModel>
-            {
-                 new(1, "Spin 45", today.AddDays(1), new(6,30), new(7,15), "Studio A", "Maja"),
-                 new(2, "Yoga Flow", today.AddDays(1), new(9,0), new(10,0), "Studio B", "Jonas"),
-                 new(3, "HIIT Express", today.AddDays(2), new(7,0), new(7,30), "Studio A", "Sara"),
-            }
-            .ToList();
+            Sessions = sessions
+                .Select(s => new TrainingSessionViewModel(
+                    s.Id,
+                    s.Title,
+                    s.DateTimeStart,
+                    s.DateTimeEnd,
+                    s.Location,
+                    s.Instructor
+                ))
+                .ToList();
         }
     }
 }

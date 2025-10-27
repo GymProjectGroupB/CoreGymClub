@@ -2,10 +2,9 @@
 
 public sealed record TrainingSessionViewModel(
     int Id,
-    string SessionName,
-    DateOnly Date,
-    TimeOnly StartTime,
-    TimeOnly EndTime,
+    string Title,
+    DateTime DateTimeStart,
+    DateTime DateTimeEnd,
     string Location,
     string Instructor
 );
