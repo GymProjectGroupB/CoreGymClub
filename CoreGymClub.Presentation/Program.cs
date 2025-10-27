@@ -1,4 +1,5 @@
 using CoreGymClub.Presentation.Data;
+using CoreGymClub.Presentation.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,8 @@ namespace CoreGymClub.Presentation
             .AddDefaultUI();
 
             builder.Services.AddRazorPages();
+
+            builder.Services.AddScoped<ITrainingSessionService, TrainingSessionService>();
 
             var app = builder.Build();
 
