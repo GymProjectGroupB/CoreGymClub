@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoreGymClub.Presentation.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreGymClub.Presentation.Data
@@ -38,6 +39,66 @@ namespace CoreGymClub.Presentation.Data
                 await userManager.CreateAsync(adminUser, "Admin123!"); 
                 await userManager.AddToRoleAsync(adminUser, "Admin");
             }
+
+            await SeedTrainingSessionsAsync(serviceProvider);
         }
+
+        private static async Task SeedTrainingSessionsAsync(IServiceProvider serviceProvider)
+        {
+            var db = serviceProvider.GetRequiredService<ApplicationDbContext>();
+
+            if (await db.TrainingSessions.AnyAsync())
+                return;
+
+            var now = DateTime.UtcNow.Date.AddHours(17);
+
+            var sessions = new[]
+            {
+        new TrainingSession
+        {
+            Title = "Strength & Conditioning",
+            DateTimeStart = now.AddDays(1),
+            DateTimeEnd = now.AddDays(1).AddHours(1),
+            Location = "Main Hall A",
+            Instructor = "Coach Lisa"
+        },
+        new TrainingSession
+        {
+            Title = "Morning Yoga Flow",
+            DateTimeStart = now.AddDays(2).AddHours(-10),
+            DateTimeEnd = now.AddDays(2).AddHours(-9),
+            Location = "Studio 2",
+            Instructor = "Anna Lee"
+        },
+        new TrainingSession
+        {
+            Title = "HIIT Express",
+            DateTimeStart = now.AddDays(3),
+            DateTimeEnd = now.AddDays(3).AddHours(1),
+            Location = "Gym Floor",
+            Instructor = "Mark Johnson"
+        },
+        new TrainingSession
+        {
+            Title = "Spin Class 45",
+            DateTimeStart = now.AddDays(4),
+            DateTimeEnd = now.AddDays(4).AddMinutes(45),
+            Location = "Spin Room",
+            Instructor = "Sarah Thompson"
+        },
+        new TrainingSession
+        {
+            Title = "Pilates Core",
+            DateTimeStart = now.AddDays(5).AddHours(-9),
+            DateTimeEnd = now.AddDays(5).AddHours(-8),
+            Location = "Studio 1",
+            Instructor = "Emily Carter"
+        }
+    };
+
+            db.TrainingSessions.AddRange(sessions);
+            await db.SaveChangesAsync();
+        }
+
     }
 }
