@@ -8,9 +8,35 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CoreGymClub.Presentation.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
+
 </head>
-<body>
-    <header>
+
+<body> @*GYM NARBAR *@
+    <header class="navbarSection">
+        <div class="navbarContainer">
+
+            <div class="navbar-item">
+                <a href="#section-home">
+                    <img class="logo-A" src="/images/gym.png" alt="My Logo" />
+                </a>
+            </div>
+            <div  class="navbar-item" id="navbar-workout">
+                <a href="#section-home">Pass</a>
+            </div>
+            <div  class="navbar-item" id="navbar-about">
+                <a href="#section-home">Om Oss</a>
+            </div>
+            <div  class="navbar-item" id="navbar-login">
+                <a href="#section-home">Logga In</a>
+            </div>
+            <div  class="navbar-item" id="navbar-register">
+                <a href="#section-home">Registrera</a>
+            </div>
+
+        </div>
+    </header>
+@*     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">CoreGymClub.Presentation</a>
@@ -31,7 +57,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> *@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
