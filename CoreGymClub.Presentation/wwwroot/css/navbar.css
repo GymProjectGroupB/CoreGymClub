@@ -49,3 +49,94 @@
     height: auto;
     display: block;
 }
+
+/* ====== Bas (desktop först) ====== */
+.navbarSection {
+    background: #111;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.navbarContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* radbryt när det blir trångt */
+}
+
+.logo-A {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.navbar-item a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    line-height: 1.2;
+}
+
+    .navbar-item a:hover,
+    .navbar-item a:focus {
+        background: rgba(255,255,255,.08);
+    }
+
+
+@media (max-width: 1024px) {
+    .navbarContainer {
+        gap: 12px;
+        padding: 10px 12px;
+    }
+
+    .navbar-item a {
+        padding: 8px 10px;
+    }
+
+    .logo-A {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navbarContainer {
+        flex-direction: column;
+        align-items: stretch; 
+        gap: 6px;
+    }
+
+    .navbar-item a {
+        width: 100%;
+        padding: 12px 14px; 
+        text-align: center;
+        font-size: 0.95rem;
+    }
+
+    .navbar-item:first-of-type {
+        align-self: center;
+    }
+    
+}
+
+
+@media (max-width: 380px) {
+    .navbar-item a {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .logo-A {
+        width: 28px;
+        height: 28px;
+    }
+}
