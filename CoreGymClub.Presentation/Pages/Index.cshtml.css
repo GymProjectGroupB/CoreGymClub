@@ -1,4 +1,5 @@
 ﻿body {
+    background-color: #020024;
     background: #020024;
     background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 100%);
 }
@@ -6,20 +7,19 @@
 h1 {
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
 
 .text-center{
     margin-bottom: 60px;
 }
 
+
 .infocards {
     display: grid;
     grid-template-areas:
         "top-left top-right"
-        "bottom-left bottom-right"
-        ;
-
+        "middle-left middle-right"
+        "bottom-left bottom-right";
     grid-gap: 60px;
 }
 
@@ -30,29 +30,67 @@ h1 {
 #infocard1 {
     text-align: left;
     grid-area: top-left;
-    color: green;
 }
 
 #infocard2 {
     text-align: right;
     grid-area: top-right;
-    color: green;
 }
 
 #infocard3 {
     text-align: left;
-    grid-area: bottom-left;
-    color: red;
+    grid-area: middle-left;
 }
 
 #infocard4 {
     text-align: right;
-    grid-area: bottom-right;
-    color: red;
+    grid-area: middle-right;
 }
+
+
 
 .sign-up-btn{
     border-radius: 5px;
     border-color: transparent;
     background-color: deepskyblue;
+}
+
+.main-infocard {
+    grid-area: bottom-left;
+    text-align: center;
+    color: white;
+    background-color: deepskyblue;
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+#infocard6 {
+    grid-area: bottom-right;
+    text-align: right;
+    grid-area: bottom-right;
+}
+
+
+
+.membership-section{
+    margin-top: 100px;
+    display: grid;
+    gap: 50px;
+    text-align:center;
+}
+
+.membership-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.membership-option {
+    padding: 20px;
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
 }
