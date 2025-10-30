@@ -1,0 +1,142 @@
+﻿body {
+}
+
+.navbarSection {
+    z-index: 10;
+    width: 80%;
+    border: 3px solid orange;
+    border-radius: 12px;
+    position: fixed;
+    top: 30px;
+    left: 10%;
+    background-color: black;
+    padding: 5px;
+    /*box-shadow:*/
+    /*margin: 0 auto;*/
+}
+
+.navbarContainer {
+    top: 30px;
+    left: 10%; /*center it*/
+    background-color: none;
+    padding: 0px;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    align-items: center;
+    /*box-shadow:*/
+    /*margin: 0 auto;*/
+}
+.navbar-item a {
+    color: darkorange;
+    /* border: 3px solid gold;*/
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .navbar-item a:visited,
+    .navbar-item a:link {
+        color: darkorange;
+    }
+
+    .navbar-item a:hover {
+        color: gold;
+        /* border: 3px solid gold;*/
+    }
+
+.logo-A {
+    width: 60px;
+    height: auto;
+    display: block;
+}
+
+/* ====== Bas (desktop först) ====== */
+.navbarSection {
+    background: #111;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.navbarContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* radbryt när det blir trångt */
+}
+
+.logo-A {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.navbar-item a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    line-height: 1.2;
+}
+
+    .navbar-item a:hover,
+    .navbar-item a:focus {
+        background: rgba(255,255,255,.08);
+    }
+
+
+@media (max-width: 1024px) {
+    .navbarContainer {
+        gap: 12px;
+        padding: 10px 12px;
+    }
+
+    .navbar-item a {
+        padding: 8px 10px;
+    }
+
+    .logo-A {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navbarContainer {
+        flex-direction: column;
+        align-items: stretch; 
+        gap: 6px;
+    }
+
+    .navbar-item a {
+        width: 100%;
+        padding: 12px 14px; 
+        text-align: center;
+        font-size: 0.95rem;
+    }
+
+    .navbar-item:first-of-type {
+        align-self: center;
+    }
+    
+}
+
+
+@media (max-width: 380px) {
+    .navbar-item a {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .logo-A {
+        width: 28px;
+        height: 28px;
+    }
+}
