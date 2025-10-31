@@ -16,9 +16,8 @@ namespace CoreGymClub.Presentation
                                    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            // ? Ändring här: AddIdentity istället för AddDefaultIdentity
+            // ðŸ‘ˆ Endast denna AddIdentity med roller
             builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
@@ -26,6 +25,8 @@ namespace CoreGymClub.Presentation
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders()
             .AddDefaultUI();
+
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddRazorPages();
 
