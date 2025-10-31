@@ -21,17 +21,17 @@
                     <img class="logo-A" src="/images/gym.png" alt="My Logo" />
                 </a>
             </div>
-            <div  class="navbar-item" id="navbar-workout">
-                <a href="#section-home">Pass</a>
+            <div class="navbar-item" id="navbar-workout">
+                <a asp-page="/TrainingSessions/Index">Pass</a>
             </div>
-            <div  class="navbar-item" id="navbar-about">
-                <a href="#section-home">Om Oss</a>
+            <div class="navbar-item" id="navbar-about">
+                <a asp-page="/About">Om Oss</a>
             </div>
-            <div  class="navbar-item" id="navbar-login">
-                <a href="#section-home">Logga In</a>
+            <div class="navbar-item" id="navbar-login">
+                <a asp-area="Identity" asp-page="/Account/Login">Logga In</a>
             </div>
-            <div  class="navbar-item" id="navbar-register">
-                <a href="#section-home">Registrera</a>
+            <div class="navbar-item" id="navbar-register">
+                <a asp-area="Identity" asp-page="/Account/Register">Registrera</a>
             </div>
 
         </div>
