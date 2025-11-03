@@ -31,6 +31,7 @@ namespace CoreGymClub.Presentation
             builder.Services.AddRazorPages();
 
             builder.Services.AddScoped<ITrainingSessionService, TrainingSessionService>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
 
             var app = builder.Build();
 

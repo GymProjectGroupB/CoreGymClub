@@ -24,7 +24,7 @@ namespace CoreGymClub.Presentation.Data
                 }
             }
 
-            
+
             var adminEmail = "admin@hotmail.com";
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
@@ -36,7 +36,7 @@ namespace CoreGymClub.Presentation.Data
                     Email = adminEmail,
                     EmailConfirmed = true
                 };
-                await userManager.CreateAsync(adminUser, "Admin123!"); 
+                await userManager.CreateAsync(adminUser, "Admin123!");
                 await userManager.AddToRoleAsync(adminUser, "Admin");
             }
 
@@ -60,7 +60,9 @@ namespace CoreGymClub.Presentation.Data
             DateTimeStart = now.AddDays(1),
             DateTimeEnd = now.AddDays(1).AddHours(1),
             Location = "Main Hall A",
-            Instructor = "Coach Lisa"
+            Instructor = "Coach Lisa",
+            Capacity = 0
+
         },
         new TrainingSession
         {
@@ -68,7 +70,9 @@ namespace CoreGymClub.Presentation.Data
             DateTimeStart = now.AddDays(2).AddHours(-10),
             DateTimeEnd = now.AddDays(2).AddHours(-9),
             Location = "Studio 2",
-            Instructor = "Anna Lee"
+            Instructor = "Anna Lee",
+            Capacity = 15
+
         },
         new TrainingSession
         {
@@ -76,7 +80,10 @@ namespace CoreGymClub.Presentation.Data
             DateTimeStart = now.AddDays(3),
             DateTimeEnd = now.AddDays(3).AddHours(1),
             Location = "Gym Floor",
-            Instructor = "Mark Johnson"
+            Instructor = "Mark Johnson",
+            Capacity = 12
+
+
         },
         new TrainingSession
         {
@@ -84,7 +91,8 @@ namespace CoreGymClub.Presentation.Data
             DateTimeStart = now.AddDays(4),
             DateTimeEnd = now.AddDays(4).AddMinutes(45),
             Location = "Spin Room",
-            Instructor = "Sarah Thompson"
+            Instructor = "Sarah Thompson",
+            Capacity = 5
         },
         new TrainingSession
         {
@@ -92,7 +100,8 @@ namespace CoreGymClub.Presentation.Data
             DateTimeStart = now.AddDays(5).AddHours(-9),
             DateTimeEnd = now.AddDays(5).AddHours(-8),
             Location = "Studio 1",
-            Instructor = "Emily Carter"
+            Instructor = "Emily Carter",
+            Capacity = 8
         }
     };
 
