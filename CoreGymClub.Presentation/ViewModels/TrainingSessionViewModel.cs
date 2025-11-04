@@ -6,5 +6,9 @@ public sealed record TrainingSessionViewModel(
     DateTime DateTimeStart,
     DateTime DateTimeEnd,
     string Location,
-    string Instructor
+    string Instructor,
+    int Capacity,
+    int RemainingPlaces,
+    bool IsFull,
+    bool IsUserBooked
 );

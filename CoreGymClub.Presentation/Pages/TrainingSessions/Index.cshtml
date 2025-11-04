@@ -2,7 +2,23 @@
 @using System.Globalization
 @model CoreGymClub.Presentation.Pages.TrainingSessions.IndexModel
 
+@{
+    // Only show booking button if user is logged in as Member
+    var isMember = User.Identity != null
+                   && User.Identity.IsAuthenticated
+                   && User.IsInRole("Member");
+}
+
 <h1>Kommande träningspass</h1>
+
+@if (TempData["Error"] is string e)
+{
+    <div class="alert alert-danger">@e</div>
+}
+@if (TempData["Success"] is string ok)
+{
+    <div class="alert alert-success">@ok</div>
+}
 
 @if (!Model.Sessions.Any())
 {
@@ -17,10 +33,33 @@ else
             @foreach (var s in day)
             {
                 <li>
-                    <strong>@s.Title</strong><br />
-                    @s.DateTimeStart.ToString("t", new CultureInfo("sv-SE")) –
-                    @s.DateTimeEnd.ToString("t", new CultureInfo("sv-SE"))<br />
-                    @s.Location • @s.Instructor
+                    <strong>@s.Title</strong>
+                    <div>
+                        @s.DateTimeStart.ToString("t", new CultureInfo("sv-SE")) –
+                        @s.DateTimeEnd.ToString("t", new CultureInfo("sv-SE"))
+                    </div>
+                    <div>@s.Location • @s.Instructor</div>
+                    <div>Platser kvar: @s.RemainingPlaces</div>
+
+                    @if (isMember)
+                    {
+                        @if (s.IsUserBooked)
+                        {
+                            <form method="post" asp-page-handler="Unbook" asp-route-id="@s.Id">
+                                <button type="submit" class="btn btn-warning btn-sm">Avboka</button>
+                            </form>
+                        }
+                        else if (s.IsFull)
+                        {
+                            <button class="btn btn-secondary btn-sm" disabled>Fullt</button>
+                        }
+                        else
+                        {
+                            <form method="post" asp-page-handler="Book" asp-route-id="@s.Id">
+                                <button type="submit" class="btn btn-primary btn-sm">Boka</button>
+                            </form>
+                        }
+                    }
                 </li>
             }
         </ul>

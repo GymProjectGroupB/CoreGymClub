@@ -14,6 +14,7 @@ public class TrainingSessionService : ITrainingSessionService
     {
         var now = DateTime.UtcNow;
         return await _db.TrainingSessions
+            .Include(s => s.Bookings)
             .Where(s => s.DateTimeEnd > now)
             .OrderBy(s => s.DateTimeStart)
             .ToListAsync(ct);
