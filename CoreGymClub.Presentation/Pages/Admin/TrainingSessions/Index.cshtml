@@ -1,0 +1,43 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.TrainingSessions.IndexModel
+@{
+}
+
+<h1>Hantera träningspass</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Skapa nytt pass</a>
+</p>
+
+@if (!Model.Sessions.Any())
+{
+    <p>Inga träningspass tillgängliga.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titel</th>
+                <th>Instruktör</th>
+                <th>Plats</th>
+                <th>Starttid</th>
+                <th>Sluttid</th>
+                <th>Kapacitet</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.Sessions)
+            {
+                <tr>
+                    <td>@s.Title</td>
+                    <td>@s.Instructor</td>
+                    <td>@s.Location</td>
+                    <td>@s.DateTimeStart.ToString("g")</td>
+                    <td>@s.DateTimeEnd.ToString("g")</td>
+                    <td>@s.Capacity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
