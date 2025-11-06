@@ -3,49 +3,192 @@
 @{
     ViewData["Title"] = "Home page";
 
-
 }
 
 
-<body>
-    <div class="text-center">
-        <h1 class="display-4">Group B Gym</h1>
-        <p>Welcome to group B's gym!</p>
+<div id="hero-section">
+    <div class="container">
 
-        <button class="sign-up-btn">
-            Sign up
+
+
+    <div class="text-center">
+        <h1 class="display-4">Core Gym</h1>
+        <p>Välkommen till Core Gym!</p>
+
+        <button class="sign-up-btn btn">
+            Bli medlem
         </button>
     </div>
 
 
     <div class="infocards">
+        <!-- Text -->
         <div class="infocard" id="infocard1">
             <h1>
-                Lorem ipsum
+                Bästa Gymmet Ever
             </h1>
             <p>
-                Lorem ipsum dolor sit amet
+                Vi har den bästa utrustningen som finns!
             </p>
         </div>
 
+
+        <!-- Bild -->
         <div class="infocard" id="infocard2">
-            <img src="images/gym.jpg" />
+            <img src="images/gym-picture1.jpg" />
         </div>
 
+
+        <!-- Bild -->
         <div class="infocard" id="infocard3">
-            <img src="images/gym.jpg" />
+            <img src="images/gym-picture2.jpg" />
         </div>
 
+
+        <!-- Text -->
         <div class="infocard" id="infocard4">
             <h1>
-                Lorem ipsum
+                Massor att göra
             </h1>
             <p>
-                Lorem ipsum dolor sit amet
+                Vi erbjuder många olika aktiviteter.
             </p>
+        </div>
+
+
+        <div class="main-infocard">
+            <h2>
+                Adress
+            </h2>
+            <div class="adress">
+                Programmeringsgatan 25
+            </div>
+            <div class="opening-hours">
+                <h2>
+                    Öppettider
+                </h2>
+                <p>
+                    Måndag - Fredag: 06.00 - 20.00 <br />
+                    Lördag: 08.00 - 20.00 <br />
+                    Söndag: 08.00 - 18.00
+                </p>
+            </div>
+        </div>
+
+
+        <div class="infocard" id="infocard6">
+            <img src="images/karta.png" width="500"/>
         </div>
     </div>
 
 
-</body>
+    </div>
+</div>
+
+
+    <div id="membership-section">
+        <div class="container">
+        <h2>
+            Medlemsskap
+        </h2>
+
+        <div class="membership-options">
+            <div class="membership-option">
+                <h3>
+                    Enkelt
+                </h3>
+                <p>
+                    Tillgång till gymmets alla maskiner
+                </p>
+                <h3>
+                    30 kr/månad
+                </h3>
+                <button class="sign-up-btn btn">
+                    Gå med
+                </button>
+            </div>
+            <div class="membership-option">
+                <h3>
+                    Premium
+                </h3>
+                <p>
+                    Allt som ingår i enkelt plus gymmets egna guide och lektioner
+                </p>
+                <h3>
+                    60 kr/månad
+                </h3>
+                <button class="sign-up-btn btn">
+                    Gå med
+                </button>
+            </div>
+            <div class="membership-option">
+                <h3>
+                    Super Premium
+                </h3>
+                <p>
+                    Allt som ingår i premium plus att du får välja musiken som spelas på högtalarna
+                </p>
+                <h3>
+                    100 kr/månad
+                </h3>
+                <button class="sign-up-btn btn">
+                    Gå med
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <div id="qna-section">
+    <div class="container">
+
+        <h1>
+            Vanliga frågor
+        </h1>
+
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Finns det duschar och omklädningsrum på gymmet?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Ja, flera stycken.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Är det här verkligen världens bästa gym?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Ja, det är vetenskapligt bevisat.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Finns det gratis godis?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Nej.
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
 

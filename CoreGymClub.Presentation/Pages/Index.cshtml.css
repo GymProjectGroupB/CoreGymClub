@@ -1,4 +1,5 @@
 ﻿body {
+    background-color: #020024;
     background: #020024;
     background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 100%);
 }
@@ -6,53 +7,221 @@
 h1 {
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
 
 .text-center{
     margin-bottom: 60px;
 }
 
-.infocards {
-    display: grid;
-    grid-template-areas:
-        "top-left top-right"
-        "bottom-left bottom-right"
-        ;
 
-    grid-gap: 60px;
-}
 
-.infocard {
+@media(width >= 800px) {
 
 }
 
-#infocard1 {
-    text-align: left;
-    grid-area: top-left;
-    color: green;
-}
 
-#infocard2 {
-    text-align: right;
-    grid-area: top-right;
-    color: green;
-}
-
-#infocard3 {
-    text-align: left;
-    grid-area: bottom-left;
-    color: red;
-}
-
-#infocard4 {
-    text-align: right;
-    grid-area: bottom-right;
-    color: red;
-}
-
-.sign-up-btn{
+.sign-up-btn {
     border-radius: 5px;
     border-color: transparent;
     background-color: deepskyblue;
+}
+
+
+/*Infocards Grid*/
+
+@media(width >= 800px) {
+    .infocards {
+        display: grid;
+        grid-template-areas:
+            "top-left top-right"
+            "middle-left middle-right"
+            "bottom-left bottom-right";
+        grid-gap: 60px;
+    }
+}
+
+@media(width <= 800px)
+{
+    .infocards {
+        display: grid;
+        grid-template-areas:
+            "top"
+            "middle"
+            "bottom";
+    }
+}
+
+
+
+
+.infocard, img {
+    width: 500px;
+    height: auto;
+}
+
+
+
+/*Text uppe till vänster*/
+
+@media(width >= 800px) {
+    #infocard1 {
+        text-align: left;
+        grid-area: top-left;
+    }
+}
+@media(width <= 800px) {
+    #infocard1 {
+        text-align: center;
+        grid-area: top;
+    }
+}
+
+/*Bild uppe till höger*/
+
+@media(width >= 800px) {
+    #infocard2 {
+        grid-area: top-right;
+        display: flex;
+        justify-self: right;
+    }
+}
+
+@media(width <= 800px){
+    #infocard2 {
+        display: none;
+    }
+}
+
+
+
+/*Bild i mitten till vänster*/
+
+@media(width >= 800px) {
+    #infocard3 {
+        grid-area: middle-left;
+        display: flex;
+        justify-content: left;
+    }
+}
+
+@media(width <= 800px) {
+    #infocard3 {
+        display: none;
+    }
+}
+
+
+
+
+/*Text i mitten till höger*/
+
+@media(width >= 800px) {
+    #infocard4 {
+        text-align: right;
+        grid-area: middle-right;
+        justify-self: right;
+    }
+}
+
+
+@media(width <= 800px) {
+    #infocard4 {
+        text-align: center;
+        grid-area: middle;
+    }
+}
+
+
+/*Adress + info nere till vänster*/
+
+@media(width >= 800px) {
+    .main-infocard {
+        grid-area: bottom-left;
+
+        text-align: center;
+        color: white;
+        background-color: deepskyblue;
+        padding: 30px;
+        border: 5px solid;
+        border-color: black;
+        border-radius: 10px;
+        display: grid;
+        width: auto;
+    }
+}
+
+
+@media(width <= 800px) {
+    .main-infocard {
+        grid-area: bottom;
+
+        text-align: center;
+        color: white;
+        background-color: deepskyblue;
+        padding: 30px;
+        border: 5px solid;
+        border-color: black;
+        border-radius: 10px;
+        display: grid;
+        width: auto;
+    }
+}
+
+
+
+
+/* Bild på karta nere till höger*/
+
+@media(width >= 800px) {
+    #infocard6 {
+        grid-area: bottom-right;
+        display: flex;
+        justify-self: right;
+    }
+}
+
+
+@media(width <= 800px) {
+    #infocard6 {
+        display: none;
+    }
+}
+
+
+
+
+
+    #membership-section {
+        text-align: center;
+        background-color: lightblue;
+
+
+    }
+
+#membership-section, .container {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    gap: 50px;
+    display: grid;
+}
+
+    .membership-options {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .membership-option {
+        padding: 20px;
+        width: 100%;
+        height: auto;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+
+#qna-section {
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
