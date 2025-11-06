@@ -1,0 +1,41 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.TrainingSessions.CreateModel
+@{
+}
+
+<h1>Skapa nytt träningspass</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="TrainingSession.Title"></label>
+        <input asp-for="TrainingSession.Title" class="form-control" />
+        <span asp-validation-for="TrainingSession.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Instructor"></label>
+        <input asp-for="TrainingSession.Instructor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Location"></label>
+        <input asp-for="TrainingSession.Location" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.DateTimeStart"></label>
+        <input asp-for="TrainingSession.DateTimeStart" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.DateTimeEnd"></label>
+        <input asp-for="TrainingSession.DateTimeEnd" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Capacity"></label>
+        <input asp-for="TrainingSession.Capacity" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Skapa</button>
+</form>
