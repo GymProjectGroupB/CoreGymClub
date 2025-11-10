@@ -9,10 +9,6 @@
                    && User.IsInRole("Member");
 }
 
-<div class="container">
-
-<h1>Kommande träningspass</h1>
-
 @if (TempData["Error"] is string e)
 {
     <div class="alert alert-danger">@e</div>
@@ -21,6 +17,50 @@
 {
     <div class="alert alert-success">@ok</div>
 }
+
+<div class="container">
+
+
+    @if (isMember)
+    {
+        <hr>
+
+        <h1>Mina Bokade pass</h1>
+
+        @if (!Model.MyBookedSessions.Any())
+        {
+            <p>Du har inga bokade pass.</p>
+        }
+        else
+        {
+            @foreach (var day in Model.MyBookedSessions.GroupBy(s => s.DateTimeStart.Date))
+            {
+                <h2>@day.Key.ToString("D", new CultureInfo("sv-SE"))</h2>
+                <ul>
+                    @foreach (var s in day)
+                    {
+                        <li>
+                            <strong>@s.Title</strong>
+                            <div>
+                                @s.DateTimeStart.ToString("t", new CultureInfo("sv-SE")) –
+                                @s.DateTimeEnd.ToString("t", new CultureInfo("sv-SE"))
+                            </div>
+                            <div>@s.Location • @s.Instructor</div>
+                        </li>
+                    }
+                </ul>
+            }
+        }
+
+        <hr>
+    }
+
+
+
+
+<h1>Kommande träningspass</h1>
+
+
 
 @if (!Model.Sessions.Any())
 {
@@ -67,6 +107,5 @@ else
         </ul>
     }
 }
-
 
 </div>

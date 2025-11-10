@@ -20,12 +20,29 @@ namespace CoreGymClub.Presentation.Pages.TrainingSessions
 
         public IReadOnlyList<TrainingSessionViewModel> Sessions { get; private set; } = [];
 
+        public IReadOnlyList<TrainingSessionViewModel> MyBookedSessions { get; private set; } = [];
+
         public async Task OnGetAsync()
         {
             var sessions = await _trainingService.UpcomingAsync();
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+            MyBookedSessions = sessions
+                .Where(s => s.Bookings.Any(b => b.UserId == userId))
+                .Select(s => new TrainingSessionViewModel(
+                    s.Id,
+                    s.Title,
+                    s.DateTimeStart,
+                    s.DateTimeEnd,
+                    s.Location,
+                    s.Instructor,
+                    s.Capacity,
+                    s.Capacity - s.Bookings.Count,
+                    s.Bookings.Count >= s.Capacity,
+                    true
+                ))
+                .ToList();
 
             Sessions = sessions
                 .Select(s => new TrainingSessionViewModel(
