@@ -1,0 +1,53 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.TrainingSessions.EditModel
+@{
+}
+
+<form method="post">
+    <input type="hidden" asp-for="TrainingSession.Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Title"></label>
+        <input asp-for="TrainingSession.Title" class="form-control" />
+        <span asp-validation-for="TrainingSession.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Instructor"></label>
+        <input asp-for="TrainingSession.Instructor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Location"></label>
+        <input asp-for="TrainingSession.Location" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Startdatum</label>
+        <input type="date" asp-for="TrainingSession.DateTimeStart" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Starttid</label>
+        <input type="time" asp-for="TrainingSession.DateTimeStart" class="form-control" step="60" />
+    </div>
+
+    <div class="form-group">
+        <label>Slutdatum</label>
+        <input type="date" asp-for="TrainingSession.DateTimeEnd" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Sluttid</label>
+        <input type="time" asp-for="TrainingSession.DateTimeEnd" class="form-control" step="60" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TrainingSession.Capacity"></label>
+        <input asp-for="TrainingSession.Capacity" type="number" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Spara ändringar</button>
+    <a asp-page="/Admin/TrainingSessions/Index" class="btn btn-secondary">Tillbaka</a>
+</form>

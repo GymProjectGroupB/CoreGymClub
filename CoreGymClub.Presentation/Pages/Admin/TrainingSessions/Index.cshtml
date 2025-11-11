@@ -26,6 +26,7 @@ else
                 <th>Starttid</th>
                 <th>Sluttid</th>
                 <th>Kapacitet</th>
+                <th>Åtgärder</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +39,9 @@ else
                     <td>@s.DateTimeStart.ToString("g")</td>
                     <td>@s.DateTimeEnd.ToString("g")</td>
                     <td>@s.Capacity</td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-warning">Redigera</a>
+                    </td>
                 </tr>
             }
         </tbody>
