@@ -16,86 +16,92 @@
 </head>
 
 <body>
-    <header class="navbarSection">
-        <div class="navbarContainer">
 
-            <div class="navbar-item">
-                <a asp-area="" asp-page="/Index">
-                    <img class="logo-A" src="/images/gym-icon.png" alt="My Logo" />
-                </a>
-            </div>
-            <div class="navbar-item" id="navbar-workout">
-                <a asp-page="/TrainingSessions/Index">Pass</a>
-            </div>
-            <div class="navbar-item" id="navbar-about">
-                <a asp-page="/About">Om Oss</a>
-            </div>
+    <div class="page-wrapper">
 
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div class="navbar-item" id="navbar-mypage">
-                    <a asp-area="Identity" asp-page="/Account/Manage/Index">Mina sidor</a>
-                </div>
-                <div class="navbar-item" id="navbar-logout">
-                    <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
-                        <button type="submit" class="btn-link" style="background:none; border:none; color:inherit; cursor:pointer;">
-                            Logga ut
-                        </button>
-                    </form>
-                </div>
-            }
-            else
-            {
-                <div class="navbar-item" id="navbar-login">
-                    <a asp-area="Identity" asp-page="/Account/Login">Logga In</a>
-                </div>
-                <div class="navbar-item" id="navbar-register">
-                    <a asp-area="Identity" asp-page="/Account/Register">Registrera</a>
-                </div>
-            }
-        </div>
-    </header>
-@*     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CoreGymClub.Presentation</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header> *@
-@*     <div class="container"> *@
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-@*     </div> *@
+        <header class="navbarSection">
+            <div class="navbarContainer">
 
-@*     <footer class="border-top footer text-muted">
-        <div class="container"> *@
-            <div class="container-footer-style">
-                <div id="weather-widget" class="weather-widget">
-                    <span id="weather-icon">☁️</span>
-                    <span id="temperature">--°C</span>
+                <div class="navbar-item">
+                    <a asp-area="" asp-page="/Index">
+                        <img class="logo-A" src="/images/gym-icon.png" alt="My Logo" />
+                    </a>
                 </div>
-                <div class="navbar-item p-white" data-lang="sv">
-                    &copy; @DateTime.Now.Year Core Gym Club. Alla rättigheter förbehållna.
+                <div class="navbar-item" id="navbar-workout">
+                    <a asp-page="/TrainingSessions/Index">Pass</a>
                 </div>
+                <div class="navbar-item" id="navbar-about">
+                    <a asp-page="/About">Om Oss</a>
+                </div>
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div class="navbar-item" id="navbar-mypage">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index">Mina sidor</a>
+                    </div>
+                    <div class="navbar-item" id="navbar-logout">
+                        <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
+                            <button type="submit" class="btn-link" style="background:none; border:none; color:inherit; cursor:pointer;">
+                                Logga ut
+                            </button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="navbar-item" id="navbar-login">
+                        <a asp-area="Identity" asp-page="/Account/Login">Logga In</a>
+                    </div>
+                    <div class="navbar-item" id="navbar-register">
+                        <a asp-area="Identity" asp-page="/Account/Register">Registrera</a>
+                    </div>
+                }
             </div>
-@*         </div>
-    </footer> *@
+        </header>
+    @*     <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">CoreGymClub.Presentation</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header> *@
+    @*     <div class="container"> *@
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+    @*     </div> *@
+
+         @* <footer class="border-top footer text-muted"> *@
+        <footer>
+
+                <div class="container-footer-style">
+                    <div id="weather-widget" class="weather-widget">
+                        <span id="weather-icon">☁️</span>
+                        <span id="temperature">--°C</span>
+                    </div>
+                    <div class="navbar-item p-white" data-lang="sv">
+                        &copy; @DateTime.Now.Year Core Gym Club. Alla rättigheter förbehållna.
+                    </div>
+                </div>
+
+        </footer> 
+
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
