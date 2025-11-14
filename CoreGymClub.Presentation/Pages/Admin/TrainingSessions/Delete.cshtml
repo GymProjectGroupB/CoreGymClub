@@ -1,0 +1,23 @@
+﻿@page "{id:int}"
+@model CoreGymClub.Presentation.Pages.Admin.TrainingSessions.DeleteModel
+@{
+    ViewData["Title"] = "Ta bort träningspass";
+}
+
+<h1>Ta bort träningspass</h1>
+
+<h3>Är du säker på att du vill ta bort detta pass?</h3>
+
+<div>
+    <h4>@Model.TrainingSession.Title</h4>
+    <p><strong>Instruktör:</strong> @Model.TrainingSession.Instructor</p>
+    <p><strong>Plats:</strong> @Model.TrainingSession.Location</p>
+    <p><strong>Start:</strong> @Model.TrainingSession.DateTimeStart.ToString("g")</p>
+    <p><strong>Slut:</strong> @Model.TrainingSession.DateTimeEnd.ToString("g")</p>
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="TrainingSession.Id" />
+    <button type="submit" class="btn btn-danger">Ta bort</button>
+    <a asp-page="./Index" class="btn btn-secondary">Avbryt</a>
+</form>
