@@ -3,6 +3,8 @@
 @{
 }
 
+<div class="container">
+
 <form method="post">
     <input type="hidden" asp-for="TrainingSession.Id" />
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -51,3 +53,5 @@
     <button type="submit" class="btn btn-success">Spara ändringar</button>
     <a asp-page="/Admin/TrainingSessions/Index" class="btn btn-secondary">Tillbaka</a>
 </form>
+
+        </div>
