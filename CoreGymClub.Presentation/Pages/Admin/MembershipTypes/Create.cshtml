@@ -1,0 +1,38 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.MembershipTypes.CreateModel
+
+<div class="container">
+    <h1>Skapa medlemskapstyp</h1>
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="MembershipType.Name" class="form-label"></label>
+            <input asp-for="MembershipType.Name" class="form-control" />
+            <span asp-validation-for="MembershipType.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MembershipType.Description" class="form-label"></label>
+            <textarea asp-for="MembershipType.Description" class="form-control"></textarea>
+            <span asp-validation-for="MembershipType.Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MembershipType.PricePerMonth" class="form-label"></label>
+            <input asp-for="MembershipType.PricePerMonth" class="form-control" />
+            <span asp-validation-for="MembershipType.PricePerMonth" class="text-danger"></span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="MembershipType.IsActive" class="form-check-input" />
+            <label asp-for="MembershipType.IsActive" class="form-check-label">Aktiv</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Spara</button>
+        <a asp-page="Index" class="btn btn-secondary">Avbryt</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
