@@ -1,0 +1,26 @@
+﻿@page "{id:int}"
+@model CoreGymClub.Presentation.Pages.Admin.MembershipTypes.DeleteModel
+
+<div class="container">
+    <h1>Ta bort medlemskapstyp</h1>
+
+    <div class="alert alert-danger">
+        Är du säker på att du vill ta bort denna medlemskapstyp?
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3">Namn</dt>
+        <dd class="col-sm-9">@Model.MembershipType.Name</dd>
+
+        <dt class="col-sm-3">Pris per månad</dt>
+        <dd class="col-sm-9">@Model.MembershipType.PricePerMonth kr</dd>
+
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@(Model.MembershipType.IsActive ? "Aktiv" : "Inaktiv")</dd>
+    </dl>
+
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Bekräfta borttagning</button>
+        <a asp-page="Index" class="btn btn-secondary ms-2">Avbryt</a>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.MembershipTypes.IndexModel
+
+<div class="container">
+    <h1>Hantera medlemskapstyper</h1>
+
+    <p>
+        <a asp-page="Create" class="btn btn-primary">Skapa ny medlemskapstyp</a>
+    </p>
+
+    @if (!Model.Memberships.Any())
+    {
+        <p>Inga medlemskapstyper tillgängliga.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Beskrivning</th>
+                    <th>Pris / månad</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model.Memberships)
+                {
+                    <tr>
+                        <td>@m.Name</td>
+                        <td>@m.Description</td>
+                        <td>@m.PricePerMonth.ToString("0.00") kr</td>
+                        <td>@(m.IsActive ? "Aktiv" : "Inaktiv")</td>
+                        <td>
+                            <a asp-page="Edit" asp-route-id="@m.Id" class="btn btn-sm btn-warning">Redigera</a>
+                            <a asp-page="Delete" asp-route-id="@m.Id" class="btn btn-sm btn-danger ms-2">Ta bort</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
