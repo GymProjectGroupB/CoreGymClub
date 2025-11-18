@@ -1,0 +1,31 @@
+﻿@page
+@model CoreGymClub.Presentation.Areas.Identity.Pages.Account.ProfileModel
+@{
+    ViewData["Title"] = "Mina sidor";
+}
+
+<div class="container py-5">
+
+    <h1 class="mb-4 text-center fw-bold">Mina sidor</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg p-4" style="border-radius: 16px;">
+                <h3 class="mb-3">Personuppgifter</h3>
+
+                <p><strong>Förnamn:</strong> @Model.UserMember.FirstName</p>
+                <p><strong>Efternamn:</strong> @Model.UserMember.LastName</p>
+                <p><strong>E-post:</strong> @Model.UserMember.User.Email</p>
+                <p><strong>Telefonnummer:</strong> @Model.UserMember.PhoneNumber</p>
+                <p><strong>Födelsedatum:</strong> @Model.UserMember.BirthDate?.ToString("yyyy-MM-dd")</p>
+                <p><strong>Adress:</strong> @Model.UserMember.Street, @Model.UserMember.PostalCode @Model.UserMember.City</p>
+
+                <a asp-page="./Manage/Index" class="btn btn-outline-primary mt-3 w-100">
+                    Ändra uppgifter
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
