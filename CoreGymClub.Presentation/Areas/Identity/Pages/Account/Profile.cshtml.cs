@@ -1,7 +1,7 @@
 using CoreGymClub.Presentation.Data;
+using CoreGymClub.Presentation.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,17 +19,43 @@ namespace CoreGymClub.Presentation.Areas.Identity.Pages.Account
             _context = context;
         }
 
-        public Member UserMember { get; set; } = default!;
+        public ProfileViewModel ViewModel { get; set; } = new();
 
-        public async Task OnGetAsync()
+        public async Task OnGet()
         {
             var user = await _userManager.GetUserAsync(User);
-            UserMember = await _context.Members.FirstOrDefaultAsync(m => m.UserId == user.Id);
+            if (user == null)
+                return;
 
-            if (UserMember == null)
+            var member = await _context.Members
+                .FirstOrDefaultAsync(m => m.UserId == user.Id);
+
+            if (member != null)
             {
-                TempData["Error"] = "Inga personuppgifter finns för denna användare.";
+                ViewModel.FirstName = member.FirstName;
+                ViewModel.LastName = member.LastName;
+                ViewModel.BirthDate = member.BirthDate;
+                ViewModel.Street = member.Street;
+                ViewModel.City = member.City;
+                ViewModel.PostalCode = member.PostalCode;
             }
+
+            ViewModel.Email = user.Email ?? "";
+            ViewModel.PhoneNumber = user.PhoneNumber ?? "";
+
+            ViewModel.UpcomingBookings = await _context.Bookings
+                .Where(b => b.UserId == user.Id)
+                .Include(b => b.TrainingSession)
+                .Where(b => b.TrainingSession.DateTimeStart > DateTime.Now)
+                .OrderBy(b => b.TrainingSession.DateTimeStart)
+                .Select(b => new UpcomingBookingItem
+                {
+                    TrainingSessionId = b.TrainingSessionId,
+                    Title = b.TrainingSession.Title,
+                    Start = b.TrainingSession.DateTimeStart,
+                    Location = b.TrainingSession.Location
+                })
+                .ToListAsync();
         }
     }
 }

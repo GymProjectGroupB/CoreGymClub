@@ -41,6 +41,28 @@ namespace CoreGymClub.Presentation.Data
             }
 
             await SeedTrainingSessionsAsync(serviceProvider);
+            await SeedAdminMembersAsync(context, adminUser);
+        }
+
+        private static async Task SeedAdminMembersAsync(ApplicationDbContext db, IdentityUser adminUser)
+        {
+            if (await db.Members.AnyAsync(m => m.UserId == adminUser.Id))
+                return;
+
+
+            var adminMember = new Member
+            {
+                UserId = adminUser.Id,
+                FirstName = "Admin",
+                LastName = "Adminsson",
+                BirthDate = new DateTime(1990, 1, 1),
+                Street = "Adminvägen 1",
+                City = "Stockholm",
+                PostalCode = "12345",
+            };
+
+            db.Members.Add(adminMember);
+            await db.SaveChangesAsync();
         }
 
         private static async Task SeedTrainingSessionsAsync(IServiceProvider serviceProvider)
