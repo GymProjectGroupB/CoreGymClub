@@ -1,0 +1,92 @@
+﻿@page
+@model CoreGymClub.Presentation.Areas.Identity.Pages.Account.ProfileModel
+@{
+    ViewData["Title"] = "Mina sidor";
+}
+
+<div class="container my-4">
+    <h1 class="mb-4">Mina sidor</h1>
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Personuppgifter
+                </div>
+                <div class="card-body">
+                    <p><strong>Förnamn:</strong> @Model.ViewModel.FirstName</p>
+                    <p><strong>Efternamn:</strong> @Model.ViewModel.LastName</p>
+                    <div class="d-flex align-items-center mb-2">
+                        <span><strong>E-post:</strong> @Model.ViewModel.Email</span>
+                        <a class="btn btn-outline-primary btn-sm ms-auto" asp-page="/Account/Manage/Email">Ändra</a>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <span><strong>Lösenord:</strong></span>
+                        <a class="btn btn-outline-primary btn-sm ms-auto"
+                           asp-page="/Account/Manage/ChangePassword">Ändra</a>
+                    </div>
+                    <p><strong>Födelsedatum:</strong> @(Model.ViewModel.BirthDate?.ToString("yyyy-MM-dd") ?? "-")</p>
+                    <p><strong>Adress:</strong> @Model.ViewModel.Street, @Model.ViewModel.City, @Model.ViewModel.PostalCode</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    Medlemskap
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ViewModel.MembershipName))
+                    {
+                        <p><strong>Typ:</strong> @Model.ViewModel.MembershipName</p>
+                        <p><strong>Start:</strong> @Model.ViewModel.MembershipStart?.ToString("yyyy-MM-dd")</p>
+                        <p><strong>Giltigt till:</strong> @Model.ViewModel.MembershipEnd?.ToString("yyyy-MM-dd")</p>
+                    }
+                    else
+                    {
+                        <p>Du har inget aktivt medlemskap.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    Kommande bokningar
+                </div>
+                <div class="card-body">
+                    @if (Model.ViewModel.UpcomingBookings.Any())
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Titel</th>
+                                    <th>Start</th>
+                                    <th>Plats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var b in Model.ViewModel.UpcomingBookings)
+                                {
+                                    <tr>
+                                        <td>@b.Title</td>
+                                        <td>@b.Start.ToString("g")</td>
+                                        <td>@b.Location</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>Inga kommande bokningar.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
