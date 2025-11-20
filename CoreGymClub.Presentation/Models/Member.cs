@@ -29,5 +29,13 @@ namespace CoreGymClub.Presentation.Data
 
         [MaxLength(10)]
         public string PostalCode { get; set; } = string.Empty;
+
+        // 🔹 KOPPLING TILL MEDLEMSTYP
+        public int? MembershipTypeId { get; set; }
+        public MembershipType? MembershipType { get; set; }
+
+        // 🔹 (Valfritt) Period för medlemskapet
+        public DateTime? MembershipStart { get; set; }
+        public DateTime? MembershipEnd { get; set; }
     }
 }

@@ -1,0 +1,101 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.Members.EditModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<div class="container">
+    <h1>Redigera medlem</h1>
+
+    <form method="post">
+        <input type="hidden" asp-for="Member.Id" />
+
+        <!-- Identity / inloggningsuppgifter -->
+        <div class="mb-3">
+            <label asp-for="Member.Email" class="form-label"></label>
+            <input asp-for="Member.Email" class="form-control" />
+            <span asp-validation-for="Member.Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Member.PhoneNumber" class="form-label"></label>
+            <input asp-for="Member.PhoneNumber" class="form-control" />
+            <span asp-validation-for="Member.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <hr />
+
+        <!-- Personuppgifter (Member) -->
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Member.FirstName" class="form-label"></label>
+                <input asp-for="Member.FirstName" class="form-control" />
+                <span asp-validation-for="Member.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="Member.LastName" class="form-label"></label>
+                <input asp-for="Member.LastName" class="form-control" />
+                <span asp-validation-for="Member.LastName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Member.BirthDate" class="form-label"></label>
+            <input asp-for="Member.BirthDate" class="form-control" type="date" />
+            <span asp-validation-for="Member.BirthDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Member.Street" class="form-label"></label>
+            <input asp-for="Member.Street" class="form-control" />
+            <span asp-validation-for="Member.Street" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Member.City" class="form-label"></label>
+                <input asp-for="Member.City" class="form-control" />
+                <span asp-validation-for="Member.City" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="Member.PostalCode" class="form-label"></label>
+                <input asp-for="Member.PostalCode" class="form-control" />
+                <span asp-validation-for="Member.PostalCode" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- Medlemskap -->
+        <div class="mb-3">
+            <label asp-for="Member.MembershipTypeId" class="form-label"></label>
+            <select asp-for="Member.MembershipTypeId"
+                    class="form-select"
+                    asp-items="@(new SelectList(Model.MembershipTypes, "Id", "Name", Model.Member.MembershipTypeId))">
+                <option value="">Välj medlemstyp</option>
+            </select>
+            <span asp-validation-for="Member.MembershipTypeId" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Member.MembershipStart" class="form-label"></label>
+                <input asp-for="Member.MembershipStart" class="form-control" type="date" />
+                <span asp-validation-for="Member.MembershipStart" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="Member.MembershipEnd" class="form-label"></label>
+                <input asp-for="Member.MembershipEnd" class="form-control" type="date" />
+                <span asp-validation-for="Member.MembershipEnd" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Spara</button>
+        <a asp-page="Index" class="btn btn-secondary ms-2">Tillbaka</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,41 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.Admin.Members.IndexModel
+
+<div class="container">
+    <h1>Medlemmar</h1>
+
+    @if (!Model.Members.Any())
+    {
+        <p>Inga medlemmar hittades.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>E-post</th>
+                    <th>Namn</th>
+                    <th>Medlemstyp</th>
+                    <th>Giltigt t.o.m</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model.Members)
+                {
+                    <tr>
+                        <td>@m.Email</td>
+                        <td>@m.FirstName @m.LastName</td>
+                        <td>@m.MembershipType</td>
+                        <td>@(m.MembershipEnd?.ToString("yyyy-MM-dd") ?? "-")</td>
+                        <td>
+                            <a asp-page="Edit" asp-route-id="@m.UserId" class="btn btn-primary btn-sm">
+                                Redigera
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
