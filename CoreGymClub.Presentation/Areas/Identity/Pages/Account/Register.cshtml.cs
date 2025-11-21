@@ -159,7 +159,7 @@ namespace CoreGymClub.Presentation.Areas.Identity.Pages.Account
                 else
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    return RedirectToPage("/Account/CompleteProfile");
                 }
             }
 

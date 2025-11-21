@@ -31,19 +31,21 @@ namespace CoreGymClub.Presentation.Areas.Identity.Pages.Account
             .Include(m => m.MembershipType)
             .FirstOrDefaultAsync(m => m.UserId == user.Id);
 
-            if (member != null)
+            if (member == null)
             {
-                ViewModel.FirstName = member.FirstName;
-                ViewModel.LastName = member.LastName;
-                ViewModel.BirthDate = member.BirthDate;
-                ViewModel.Street = member.Street;
-                ViewModel.City = member.City;
-                ViewModel.PostalCode = member.PostalCode;
-                ViewModel.MembershipName = member.MembershipType?.Name;
-                ViewModel.MembershipStart = member.MembershipStart;
-                ViewModel.MembershipEnd = member.MembershipEnd;
+                Response.Redirect("/Identity/Account/CompleteProfile");
+                return;
             }
 
+            ViewModel.FirstName = member.FirstName;
+            ViewModel.LastName = member.LastName;
+            ViewModel.BirthDate = member.BirthDate;
+            ViewModel.Street = member.Street;
+            ViewModel.City = member.City;
+            ViewModel.PostalCode = member.PostalCode;
+            ViewModel.MembershipName = member.MembershipType?.Name;
+            ViewModel.MembershipStart = member.MembershipStart;
+            ViewModel.MembershipEnd = member.MembershipEnd;
             ViewModel.Email = user.Email ?? "";
             ViewModel.PhoneNumber = user.PhoneNumber ?? "";
 
