@@ -30,15 +30,18 @@ namespace CoreGymClub.Presentation.Areas.Identity.Pages.Account
             var member = await _context.Members
                 .FirstOrDefaultAsync(m => m.UserId == user.Id);
 
-            if (member != null)
+            if (member == null)
             {
-                ViewModel.FirstName = member.FirstName;
-                ViewModel.LastName = member.LastName;
-                ViewModel.BirthDate = member.BirthDate;
-                ViewModel.Street = member.Street;
-                ViewModel.City = member.City;
-                ViewModel.PostalCode = member.PostalCode;
+                Response.Redirect("/Identity/Account/CompleteProfile");
+                return;
             }
+
+            ViewModel.FirstName = member.FirstName;
+            ViewModel.LastName = member.LastName;
+            ViewModel.BirthDate = member.BirthDate;
+            ViewModel.Street = member.Street;
+            ViewModel.City = member.City;
+            ViewModel.PostalCode = member.PostalCode;
 
             ViewModel.Email = user.Email ?? "";
             ViewModel.PhoneNumber = user.PhoneNumber ?? "";
