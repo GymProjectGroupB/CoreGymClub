@@ -1,0 +1,91 @@
+﻿@page
+@model CoreGymClub.Presentation.Areas.Identity.Pages.Account.CompleteProfileModel
+@{
+    ViewData["Title"] = "Fyll i din profil";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Fyll i dina uppgifter</h4>
+                </div>
+
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.FirstName" class="form-label"></label>
+                            <input asp-for="Input.FirstName" class="form-control" />
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.LastName" class="form-label"></label>
+                            <input asp-for="Input.LastName" class="form-control" />
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.BirthDate" class="form-label"></label>
+                            <input asp-for="Input.BirthDate" class="form-control" type="date" />
+                            <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Street" class="form-label"></label>
+                            <input asp-for="Input.Street" class="form-control" />
+                            <span asp-validation-for="Input.Street" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.City" class="form-label"></label>
+                            <input asp-for="Input.City" class="form-control" />
+                            <span asp-validation-for="Input.City" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.PostalCode" class="form-label"></label>
+                            <input asp-for="Input.PostalCode" class="form-control" />
+                            <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                        </div>
+
+                        <button class="btn btn-primary w-100 mt-3" type="submit">
+                            Spara uppgifter
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const submitButton = document.querySelector("button[type='submit']");
+
+            function validateForm() {
+                if (form.checkValidity()) {
+                    submitButton.disabled = false;
+                } else {
+                    submitButton.disabled = true;
+                }
+            }
+
+            submitButton.disabled = true;
+
+            form.querySelectorAll("input").forEach(input => {
+                input.addEventListener("input", validateForm);
+            });
+        });
+    </script>
+}
