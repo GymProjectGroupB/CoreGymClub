@@ -39,9 +39,10 @@ else
                     <td>@s.DateTimeStart.ToString("g")</td>
                     <td>@s.DateTimeEnd.ToString("g")</td>
                     <td>@s.Capacity</td>
-                    <td>
-                        <a asp-page="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-warning">Redigera</a>
-                    </td>
+                        <td>
+                            <a asp-page="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-warning">Redigera</a>
+                            <a asp-page="Delete" asp-route-id="@s.Id" class="btn btn-sm btn-danger ml-1">Ta bort</a>
+                        </td>
                 </tr>
             }
         </tbody>
