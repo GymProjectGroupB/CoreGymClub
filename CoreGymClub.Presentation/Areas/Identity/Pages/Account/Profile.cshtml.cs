@@ -28,7 +28,8 @@ namespace CoreGymClub.Presentation.Areas.Identity.Pages.Account
                 return;
 
             var member = await _context.Members
-                .FirstOrDefaultAsync(m => m.UserId == user.Id);
+            .Include(m => m.MembershipType)
+            .FirstOrDefaultAsync(m => m.UserId == user.Id);
 
             if (member == null)
             {
@@ -42,7 +43,9 @@ namespace CoreGymClub.Presentation.Areas.Identity.Pages.Account
             ViewModel.Street = member.Street;
             ViewModel.City = member.City;
             ViewModel.PostalCode = member.PostalCode;
-
+            ViewModel.MembershipName = member.MembershipType?.Name;
+            ViewModel.MembershipStart = member.MembershipStart;
+            ViewModel.MembershipEnd = member.MembershipEnd;
             ViewModel.Email = user.Email ?? "";
             ViewModel.PhoneNumber = user.PhoneNumber ?? "";
 
