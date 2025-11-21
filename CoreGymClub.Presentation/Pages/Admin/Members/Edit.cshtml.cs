@@ -1,4 +1,4 @@
-using CoreGymClub.Presentation.Data;
+﻿using CoreGymClub.Presentation.Data;
 using CoreGymClub.Presentation.Models;
 using CoreGymClub.Presentation.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +26,7 @@ namespace CoreGymClub.Presentation.Pages.Admin.Members
 
         public List<MembershipType> MembershipTypes { get; set; } = new();
 
-        // ?? OBS: INGEN IActionResult � annars f�r du 404
+        // ?? OBS: INGEN IActionResult – annars får du 404
         public async Task OnGetAsync(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -39,17 +39,17 @@ namespace CoreGymClub.Presentation.Pages.Admin.Members
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
-                ModelState.AddModelError("", "Kunde inte hitta anv�ndaren.");
+                ModelState.AddModelError("", "Kunde inte hitta användaren.");
                 return;
             }
 
-            // H�mta eller skapa Member-profil
+            // Hämta eller skapa Member-profil
             var member = await _context.Members
                 .FirstOrDefaultAsync(m => m.UserId == id);
 
             if (member == null)
             {
-                // Skapa en tom profil (f�r att undvika 404)
+                // Skapa en tom profil (för att undvika 404)
                 member = new Member
                 {
                     UserId = id,
@@ -92,7 +92,7 @@ namespace CoreGymClub.Presentation.Pages.Admin.Members
 
         public async Task<IActionResult> OnPostAsync()
         {
-            // Ladda dropdown ALLTID
+            // Ladda dropdown ALLTID (för att vyn ska fungera om validering faller)
             MembershipTypes = await _context.MembershipTypes
                 .Where(mt => mt.IsActive)
                 .OrderBy(mt => mt.Name)
@@ -101,9 +101,45 @@ namespace CoreGymClub.Presentation.Pages.Admin.Members
             if (!ModelState.IsValid)
                 return Page();
 
+            // Hämta Identity-user
             var user = await _userManager.FindByIdAsync(Member.Id);
-            var member = await _context.Members.FirstOrDefaultAsync(m => m.UserId == Member.Id);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Användaren kunde inte hittas.");
+                return Page();
+            }
 
+            // Hämta Member-profil
+            var member = await _context.Members.FirstOrDefaultAsync(m => m.UserId == Member.Id);
+            if (member == null)
+            {
+                ModelState.AddModelError("", "Medlemsprofilen kunde inte hittas.");
+                return Page();
+            }
+
+            // Uppdatera Identity-uppgifter
+            user.Email = Member.Email;
+            user.UserName = Member.Email; // om ni använder e-post som användarnamn
+            user.PhoneNumber = Member.PhoneNumber;
+
+            var identityResult = await _userManager.UpdateAsync(user);
+            if (!identityResult.Succeeded)
+            {
+                foreach (var err in identityResult.Errors)
+                    ModelState.AddModelError("", err.Description);
+
+                return Page();
+            }
+
+            // 🔹 Uppdatera Member (namn + adress + födelsedatum)
+            member.FirstName = Member.FirstName;
+            member.LastName = Member.LastName;
+            member.BirthDate = Member.BirthDate;
+            member.Street = Member.Street;
+            member.City = Member.City;
+            member.PostalCode = Member.PostalCode;
+
+            // 🔹 Uppdatera medlemskap
             member.MembershipTypeId = Member.MembershipTypeId;
             member.MembershipStart = Member.MembershipStart;
             member.MembershipEnd = Member.MembershipEnd;
