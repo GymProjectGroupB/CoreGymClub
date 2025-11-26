@@ -1,0 +1,47 @@
+﻿@page
+@model CoreGymClub.Presentation.Pages.JoinMembershipModel
+
+<div class="container">
+    <h1>Payment Details</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="form-group">
+                    <input asp-for="Membership" type="radio" id="enkelt" value="enkelt">
+                    <label for="enkelt">Enkelt</label><br>
+                    <input asp-for="Membership" type="radio" id="premium" value="premium">
+                    <label for="premium">Premium</label><br>
+                    <input asp-for="Membership" type="radio" id="super-premium" value="super-premium">
+                    <label for="super-premium">Super Premium</label>
+                    <span asp-validation-for="Membership" class="text-danger"></span>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="CreditCard.CardNumber"></label>
+                    <input asp-for="CreditCard.CardNumber" class="form-control" />
+                    <span asp-validation-for="CreditCard.CardNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreditCard.NameOnCard"></label>
+                    <input asp-for="CreditCard.NameOnCard" class="form-control" />
+                    <span asp-validation-for="CreditCard.NameOnCard" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="CreditCard.Expiration"></label>
+                        <input asp-for="CreditCard.Expiration" class="form-control" placeholder="MM/YY" />
+                        <span asp-validation-for="CreditCard.Expiration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="CreditCard.CVV"></label>
+                        <input asp-for="CreditCard.CVV" class="form-control" placeholder="CVV" />
+                        <span asp-validation-for="CreditCard.CVV" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+</div>
