@@ -13,6 +13,10 @@ h1 {
     margin-bottom: 60px;
 }
 
+.carousel-section {
+    border: 5px solid;
+    border-color: black;
+}
 
 
 @media(width >= 800px) {
