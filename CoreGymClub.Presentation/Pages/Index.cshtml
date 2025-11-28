@@ -2,9 +2,9 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-
 }
 
+@* <<<<<<< HEAD *@
 <div class="carousel-section">
     <div class="container">
        <div class="carousel-imgbox">
@@ -15,89 +15,92 @@
        </div>
     </div>
 </div>
+@* ======= *@
+@inject SignInManager<IdentityUser> SignInManager
+@* >>>>>>> origin/main *@
 
 
 <div id="hero-section">
     <div class="container">
 
 
-    <div class="text-center">
-        <h1 class="display-4">Core Gym</h1>
-        <p>Välkommen till Core Gym!</p>
+        <div class="text-center">
+            <h1 class="display-4">Core Gym</h1>
+            <p>Välkommen till Core Gym!</p>
 
-        <button class="sign-up-btn btn">
-            Bli medlem
-        </button>
-    </div>
-
-
-    <div class="infocards">
-        <!-- Text -->
-        <div class="infocard" id="infocard1">
-            <h1>
-                Bästa Gymmet Ever
-            </h1>
-            <p>
-                Vi har den bästa utrustningen som finns!
-            </p>
+            <a href="#membership-section" class="sign-up-btn btn">
+                Bli medlem
+            </a>
         </div>
 
 
-        <!-- Bild -->
-        <div class="infocard" id="infocard2">
-            <img src="images/gym-picture1.jpg" />
-        </div>
-
-
-        <!-- Bild -->
-        <div class="infocard" id="infocard3">
-            <img src="images/gym-picture2.jpg" />
-        </div>
-
-
-        <!-- Text -->
-        <div class="infocard" id="infocard4">
-            <h1>
-                Massor att göra
-            </h1>
-            <p>
-                Vi erbjuder många olika aktiviteter.
-            </p>
-        </div>
-
-
-        <div class="main-infocard">
-            <h2>
-                Adress
-            </h2>
-            <div class="adress">
-                Programmeringsgatan 25
-            </div>
-            <div class="opening-hours">
-                <h2>
-                    Öppettider
-                </h2>
+        <div class="infocards">
+            <!-- Text -->
+            <div class="infocard" id="infocard1">
+                <h1>
+                    Bästa Gymmet Ever
+                </h1>
                 <p>
-                    Måndag - Fredag: 06.00 - 20.00 <br />
-                    Lördag: 08.00 - 20.00 <br />
-                    Söndag: 08.00 - 18.00
+                    Vi har den bästa utrustningen som finns!
                 </p>
             </div>
-        </div>
 
 
-        <div class="infocard" id="infocard6">
-            <img src="images/karta.png" width="500"/>
+            <!-- Bild -->
+            <div class="infocard" id="infocard2">
+                <img src="images/gym-picture1.jpg" />
+            </div>
+
+
+            <!-- Bild -->
+            <div class="infocard" id="infocard3">
+                <img src="images/gym-picture2.jpg" />
+            </div>
+
+
+            <!-- Text -->
+            <div class="infocard" id="infocard4">
+                <h1>
+                    Massor att göra
+                </h1>
+                <p>
+                    Vi erbjuder många olika aktiviteter.
+                </p>
+            </div>
+
+
+            <div class="main-infocard">
+                <h2>
+                    Adress
+                </h2>
+                <div class="adress">
+                    Programmeringsgatan 25
+                </div>
+                <div class="opening-hours">
+                    <h2>
+                        Öppettider
+                    </h2>
+                    <p>
+                        Måndag - Fredag: 06.00 - 20.00 <br />
+                        Lördag: 08.00 - 20.00 <br />
+                        Söndag: 08.00 - 18.00
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="infocard" id="infocard6">
+                <img src="images/karta.png" width="500"/>
+            </div>
         </div>
-    </div>
 
 
     </div>
 </div>
 
 
-    <div id="membership-section">
-        <div class="container">
+<div id="membership-section">
+    <div class="container">
         <h2>
             Medlemsskap
         </h2>
@@ -114,8 +117,20 @@
                     30 kr/månad
                 </h3>
                 <button class="sign-up-btn btn">
-                    Gå med
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-page="/JoinMembership">
+                            Gå med
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Register">
+                            Gå med
+                        </a>
+                    }
                 </button>
+
             </div>
             <div class="membership-option">
                 <h3>
@@ -128,7 +143,19 @@
                     60 kr/månad
                 </h3>
                 <button class="sign-up-btn btn">
-                    Gå med
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-page="/JoinMembership">
+                            Gå med
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Register">
+                            Gå med
+                        </a>
+                    }
+
                 </button>
             </div>
             <div class="membership-option">
@@ -142,15 +169,26 @@
                     100 kr/månad
                 </h3>
                 <button class="sign-up-btn btn">
-                    Gå med
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-page="/JoinMembership">
+                            Gå med
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Register">
+                            Gå med
+                        </a>
+                    }
                 </button>
             </div>
         </div>
-        </div>
     </div>
+</div>
 
 
-    <div id="qna-section">
+<div id="qna-section">
     <div class="container">
 
         <h1>
@@ -196,9 +234,6 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
-
-
-
+</div>
 

@@ -17,8 +17,8 @@
 
 <body>
 
-    <div class="page-wrapper">
-
+     <div class="page-wrapper">
+ 
         <header class="navbarSection">
             <div class="navbarContainer">
 
@@ -37,12 +37,22 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <div class="navbar-item" id="navbar-mypage">
-                        <a asp-area="Identity" asp-page="/Account/Manage/Index">Mina sidor</a>
+                        <a asp-area="Identity" asp-page="/Account/Profile">Mina sidor</a>
+                    </div>
+                    <div class="navbar-item" id="navbar-workout-list">
+                        <a asp-page="/Admin/TrainingSessions/Index" class="d-inline">Training Sessions</a>
+                    </div>
+                    <div class="navbar-item" id="navbar-workout-list">
+                        <a asp-page="/Admin/Members/Index" class="d-inline">Konton</a>
+                    </div>
+
+                    <div class="navbar-item" id="navbar-workout-list">
+                        <a asp-page="/Admin/MembershipTypes/Index" class="d-inline">Medlemstyper</a>
                     </div>
                     <div class="navbar-item" id="navbar-logout">
                         <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
                             <button type="submit" class="btn-link" style="background:none; border:none; color:inherit; cursor:pointer;">
-                                Logga ut
+                 \               Logga ut
                             </button>
                         </form>
                     </div>
@@ -56,59 +66,33 @@
                         <a asp-area="Identity" asp-page="/Account/Register">Registrera</a>
                     </div>
                 }
+
             </div>
         </header>
-    @*     <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">CoreGymClub.Presentation</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial" />
-                    </div>
-                </div>
-            </nav>
-        </header> *@
-    @*     <div class="container"> *@
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-    @*     </div> *@
 
-         @* <footer class="border-top footer text-muted"> *@
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
         <footer>
-
-                <div class="container-footer-style">
-                    <div id="weather-widget" class="weather-widget">
-                        <span id="weather-icon">☁️</span>
-                        <span id="temperature">--°C</span>
-                    </div>
-                    <div class="navbar-item p-white" data-lang="sv">
-                        &copy; @DateTime.Now.Year Core Gym Club. Alla rättigheter förbehållna.
-                    </div>
+            <div class="container-footer-style">
+                <div id="weather-widget" class="weather-widget">
+                    <span id="weather-icon">☁️</span>
+                    <span id="temperature">--°C</span>
                 </div>
-
+                <div class="navbar-item p-white" data-lang="sv">
+                    &copy; @DateTime.Now.Year Core Gym Club. Alla rättigheter förbehållna.
+                </div>
+            </div>
         </footer> 
 
-    </div>
-
+     </div>
+ 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/footer.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

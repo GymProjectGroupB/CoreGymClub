@@ -8,6 +8,9 @@ namespace CoreGymClub.Presentation.Data
     {
         public DbSet<TrainingSession> TrainingSessions { get; set; } = default!;
         public DbSet<Booking> Bookings => Set<Booking>();
+        public DbSet<Member> Members { get; set; }
+
+        public DbSet<MembershipType> MembershipTypes => Set<MembershipType>();
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
