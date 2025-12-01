@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Core Gym";
 }
 
 @inject SignInManager<IdentityUser> SignInManager
@@ -112,7 +112,7 @@
                     }
                     else
                     {
-                        <a asp-area="Identity" asp-page="/Account/Register">
+                        <a asp-area="Identity" asp-page="/Account/Login">
                             Gå med
                         </a>
                     }
