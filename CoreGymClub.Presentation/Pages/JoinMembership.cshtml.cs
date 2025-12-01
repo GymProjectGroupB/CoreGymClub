@@ -28,8 +28,8 @@ public class JoinMembershipModel : PageModel
 
     public List<SelectListItem> MembershipTypes { get; set; }
     public int MembershipTypeId { get; set; }
-    public DateTime MembershipStart { get; set; }
-    public DateTime MembershipEnd { get; set; }
+    public DateTime MembershipStart { get; set; } = DateTime.Now;
+    public DateTime MembershipEnd { get; set; } = DateTime.Now.AddDays(31);
     public class CreditCardModel
     {
         [Required]
