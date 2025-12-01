@@ -1,0 +1,71 @@
+﻿.carousel-container {
+    position: relative; /* parent for absolute children */
+    width: 750px;
+    height: 150px;
+    /*border: 3px solid yellow;*/ /* outer border visible */
+    margin: 0 auto; /* center on page */
+    overflow: hidden; /* allow overflow for now */
+}
+
+.carousel-inner-container {
+    position: absolute; /* allow free movement */
+    top: 0;
+    left: 50%; /* center horizontally */
+    transform: translateX(-50%); /* shift back by half its width */
+    display: flex;
+    flex-direction: row;
+    /*border: 3px solid red;*/ /* inner border visible */
+    /*gap: 10px;*/ /* spacing between images */
+    animation: moveLeft 3s linear;
+}
+@keyframes moveLeft {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    50% {
+        transform: translateX(-70%);
+       
+}
+    100% {
+        transform: translateX(-70%); 
+    }
+}
+.carousel-imgbox {
+    width: 250px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.carousel-imgbox-1 {
+    background-image: url('/images/machine_1280x720.png');
+}
+.carousel-imgbox-2 {
+    background-image: url('/images/motivation_1280x720.png');
+}
+.carousel-imgbox-3 {
+    background-image: url('/images/water_bubbles_1280x720.png');
+}
+.carousel-imgbox-4 {
+    background-image: url('/images/early_bird_1280x720.png');
+/*    animation: increaseSize 3s linear infinite;*/
+}
+/*@keyframes increaseSize {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);*/ /* bigger */
+    /*}
+
+    100% {
+        transform: scale(1);
+    }
+}*/
+
+/*.carousel-imgbox-5 {
+    background-image: url('/images/machine_1280x720.png');
+}*/

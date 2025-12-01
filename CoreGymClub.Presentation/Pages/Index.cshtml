@@ -4,17 +4,19 @@
     ViewData["Title"] = "Home page";
 }
 
-@* <<<<<<< HEAD *@
-<div class="carousel-section">
-    <div class="container">
-       <div class="carousel-imgbox">
-           
-       </div>
-       <div class="carousel-textbox">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/carousel.css" asp-append-version="true" />
 
-       </div>
+</head>
+
+@* <<<<<<< HEAD *@
+@* <div class="carousel-section">
+    <div class="container">
+
+
     </div>
-</div>
+</div> *@
 @* ======= *@
 @inject SignInManager<IdentityUser> SignInManager
 @* >>>>>>> origin/main *@
@@ -31,6 +33,60 @@
             <a href="#membership-section" class="sign-up-btn btn">
                 Bli medlem
             </a>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-inner-container">
+
+                <div class="promotion-tip-box" id="ptb1"> 
+
+                    <div class="carousel-imgbox carousel-imgbox-1" id="carousel-imgbox-1-id">
+
+                    </div>
+
+                    <div class="carousel-textbox">
+
+                    </div>
+
+                </div>
+                <div class="promotion-tip-box" id="ptb2">
+
+                    <div class="carousel-imgbox carousel-imgbox-2" id="carousel-imgbox-2-id">
+                    </div>
+
+                    <div class="carousel-textbox">
+                    </div>
+                
+                </div>
+                <div class="promotion-tip-box" id="ptb3">
+
+                    <div class="carousel-imgbox carousel-imgbox-3" id="carousel-imgbox-3-id">
+                    </div>
+
+                    <div class="carousel-textbox">
+                    </div>
+
+                </div>
+                <div class="promotion-tip-box" id="ptb4">
+
+                    <div class="carousel-imgbox carousel-imgbox-4" id="carousel-imgbox-4-id">
+                    </div>
+
+                    <div class="carousel-textbox">
+                    </div>
+
+                </div>
+                <div class="promotion-tip-box" id="ptb5">
+
+                    <div class="carousel-imgbox carousel-imgbox-1" id="carousel-imgbox-5-id">
+                    </div>
+
+                    <div class="carousel-textbox">
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 
 
@@ -236,4 +292,4 @@
         </div>
     </div>
 </div>
-
+<script src="~/js/carousel.js" asp-append-version="true"></script>
