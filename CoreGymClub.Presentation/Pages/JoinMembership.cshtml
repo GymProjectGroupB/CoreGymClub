@@ -7,17 +7,27 @@
     <div class="row">
         <div class="col-md-6">
             <form method="post">
-                <div class="form-group">
-                    <input asp-for="Membership" type="radio" id="enkelt" value="enkelt">
-                    <label for="enkelt">Enkelt</label><br>
-                    <input asp-for="Membership" type="radio" id="premium" value="premium">
-                    <label for="premium">Premium</label><br>
-                    <input asp-for="Membership" type="radio" id="super-premium" value="super-premium">
-                    <label for="super-premium">Super Premium</label>
-                    <span asp-validation-for="Membership" class="text-danger"></span>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="MembershipTypeId" class="form-label"></label>
+                    <select asp-for="MembershipTypeId" class="form-control" asp-items="@Model.MembershipTypes"></select>
+                    <span asp-validation-for="MembershipTypeId" class="text-danger"></span>
                 </div>
 
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="MembershipStart" class="form-label"></label>
+                        <input asp-for="MembershipStart" class="form-control" type="date" />
+                        <span asp-validation-for="MembershipStart" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="MembershipEnd" class="form-label"></label>
+                        <input asp-for="MembershipEnd" class="form-control" type="date" />
+                        <span asp-validation-for="MembershipStart" class="text-danger"></span>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label asp-for="CreditCard.CardNumber"></label>
                     <input asp-for="CreditCard.CardNumber" class="form-control" />

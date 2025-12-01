@@ -26,7 +26,7 @@ namespace CoreGymClub.Presentation.Pages.Admin.Members
 
         public List<MembershipType> MembershipTypes { get; set; } = new();
 
-        // ?? OBS: INGEN IActionResult – annars får du 404
+        // ?? OBS: INGEN IActionResult – annars får du 404 
         public async Task OnGetAsync(string id)
         {
             if (string.IsNullOrEmpty(id))
