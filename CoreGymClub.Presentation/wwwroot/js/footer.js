@@ -1,5 +1,5 @@
 ﻿
-//my  Weather code.
+//Weather code.
 const apiKey = '4548d19a301df0eed7c73110e6d8f49e';
 const city = 'Stockholm';
 

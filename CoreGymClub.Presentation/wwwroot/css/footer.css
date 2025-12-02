@@ -1,23 +1,22 @@
-﻿/* Ensure full-height layout so footer sits at bottom even on short pages */
+﻿
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* The wrapper that surrounds header + main + footer */
+
 .page-wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Main content grows to fill the page */
+
 main {
     flex: 1;
 }
 
-/* Footer styling */
 .container-footer-style {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -28,11 +27,11 @@ main {
     padding: 10px 0;
     width: 100%;
     height: 60px;
-    /* No fixed or sticky positioning */
+
     position: static;
 }
 
-/* Weather widget */
+
 .weather-widget {
     display: flex;
     align-items: center;
