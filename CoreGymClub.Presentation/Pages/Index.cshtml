@@ -4,6 +4,8 @@
     ViewData["Title"] = "Core Gym";
 }
 
+
+
 @inject SignInManager<IdentityUser> SignInManager
 
 
@@ -18,6 +20,60 @@
             <a href="#membership-section" class="sign-up-btn btn">
                 Bli medlem
             </a>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-inner-container">
+
+                <div class="promotion-tip-box" id="ptb1">
+
+                    <div class="carousel-imgbox carousel-imgbox-1" id="carousel-imgbox-1-id">
+                        @* <img class="carousel-icon" src="/images/flaska_mini.png" alt=""> *@
+                        <div class="carousel-icon-1" id="carousel-icon-id-1"></div>
+                        <div class="carousel-text-1" id="carousel-text-id-1"></div>
+                    </div>
+
+                </div>
+                <div class="promotion-tip-box" id="ptb2">
+
+                    <div class="carousel-imgbox carousel-imgbox-2" id="carousel-imgbox-2-id">
+                        @* <img class="carousel-icon" src="/images/flaska_mini.png" alt=""> *@
+                        <div class="carousel-icon-2" id="carousel-icon-id-2"></div>
+                        <div class="carousel-text-2" id="carousel-text-id-2"></div>
+                    </div>
+
+                </div>
+
+                <div class="promotion-tip-box" id="ptb3">
+
+                    <div class="carousel-imgbox carousel-imgbox-3" id="carousel-imgbox-3-id">
+                        @* <img class="carousel-icon" src="/images/flaska_mini.png" alt=""> *@
+                        <div class="carousel-icon-3" id="carousel-icon-id-3"></div>
+                        <div class="carousel-text-3" id="carousel-text-id-3">Samla morgonpass med<br>Early Bird!</div>
+                    </div>
+
+                </div>
+
+                <div class="promotion-tip-box" id="ptb4">
+
+                    <div class="carousel-imgbox carousel-imgbox-4" id="carousel-imgbox-4-id">
+                        @* <img class="carousel-icon" src="/images/flaska_mini.png" alt=""> *@
+                        <div class="carousel-icon-4" id="carousel-icon-id-4"></div>
+                        <div class="carousel-text-4" id="carousel-text-id-4"></div>
+                    </div>
+
+                </div>
+                <div class="promotion-tip-box" id="ptb5">
+
+                    <div class="carousel-imgbox carousel-imgbox-1" id="carousel-imgbox-5-id">
+                        @* <img class="carousel-icon" src="/images/flaska_mini.png" alt=""> *@
+                        <div class="carousel-icon-1" id="carousel-icon-id-5"></div>
+                        <div class="carousel-text-1" id="carousel-text-id-5"></div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 
 
@@ -223,4 +279,6 @@
         </div>
     </div>
 </div>
+
+<script src="~/js/carousel.js" asp-append-version="true"></script>
 
