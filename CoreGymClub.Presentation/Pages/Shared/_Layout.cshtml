@@ -39,20 +39,25 @@
                     <div class="navbar-item" id="navbar-mypage">
                         <a asp-area="Identity" asp-page="/Account/Profile">Mina sidor</a>
                     </div>
-                    <div class="navbar-item" id="navbar-workout-list">
-                        <a asp-page="/Admin/TrainingSessions/Index" class="d-inline">Training Sessions</a>
-                    </div>
-                    <div class="navbar-item" id="navbar-workout-list">
-                        <a asp-page="/Admin/Members/Index" class="d-inline">Konton</a>
-                    </div>
 
-                    <div class="navbar-item" id="navbar-workout-list">
-                        <a asp-page="/Admin/MembershipTypes/Index" class="d-inline">Medlemstyper</a>
-                    </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="navbar-item" id="navbar-workout-list">
+                            <a asp-page="/Admin/TrainingSessions/Index" class="d-inline">Training Sessions</a>
+                        </div>
+                        <div class="navbar-item" id="navbar-workout-list">
+                            <a asp-page="/Admin/Members/Index" class="d-inline">Konton</a>
+                        </div>
+
+                        <div class="navbar-item" id="navbar-workout-list">
+                            <a asp-page="/Admin/MembershipTypes/Index" class="d-inline">Medlemstyper</a>
+                        </div>
+                    }
+
                     <div class="navbar-item" id="navbar-logout">
                         <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
                             <button type="submit" class="btn-link" style="background:none; border:none; color:inherit; cursor:pointer;">
-                 \               Logga ut
+                                Logga ut
                             </button>
                         </form>
                     </div>
